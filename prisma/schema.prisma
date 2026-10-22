@@ -51,3 +51,14 @@ model Admission {
   userId      String?
   user        User?           @relation(fields: [userId], references: [id])
 }
+model QuoteRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  service   String
+  budget    String?
+  message   String
+  status    String   @default("NEW")
+  createdAt DateTime @default(now())
+}

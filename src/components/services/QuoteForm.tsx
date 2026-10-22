@@ -3,20 +3,29 @@
 import { useState } from "react";
 import { CheckCircle2, Send } from "lucide-react";
 import { services, budgetOptions } from "@/data/services";
+import { submitQuote } from "@/app/actions/quote"; // 🆕 (a) server action import
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // 🆕 (b) error message ke liye
 
+  // 🆕 (c) naya handleSubmit: ab data server par jata hai
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    // TODO (Step 8): yahan data backend ko bhejenge aur email jayegi
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    const formData = new FormData(e.currentTarget);
+    const result = await submitQuote(formData);
 
     setLoading(false);
-    setSubmitted(true);
+
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setError(result.error);
+    }
   }
 
   if (submitted) {
@@ -117,6 +126,13 @@ export default function QuoteForm() {
           />
         </div>
       </div>
+
+      {/* 🆕 (d) agar server koi error bheje to yahan laal box mein dikhega */}
+      {error && (
+        <div className="mt-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
 
       <button
         type="submit"

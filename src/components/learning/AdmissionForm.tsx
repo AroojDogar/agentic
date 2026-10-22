@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle2, Send } from "lucide-react";
+import { submitAdmission } from "@/app/actions/admission"; // 🆕 (a) server action import
 
 type AdmissionFormProps = {
   courseSlug: string;
@@ -21,18 +22,24 @@ const experienceOptions = ["No experience", "Beginner", "Intermediate", "Profess
 export default function AdmissionForm({ courseSlug, courseTitle }: AdmissionFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // 🆕 (b) error message ke liye
 
+  // 🆕 (c) naya handleSubmit: ab data server par jata hai
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    // TODO (Step 8): data database mein save hoga aur admin ko email jayegi
     const formData = new FormData(e.currentTarget);
-    console.log("Admission:", courseSlug, Object.fromEntries(formData));
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    const result = await submitAdmission(formData);
 
     setLoading(false);
-    setSubmitted(true);
+
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setError(result.error);
+    }
   }
 
   if (submitted) {
@@ -59,6 +66,9 @@ export default function AdmissionForm({ courseSlug, courseTitle }: AdmissionForm
       onSubmit={handleSubmit}
       className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/60 sm:p-10"
     >
+      {/* 🆕 (d) course ka naam chupke se server ko bhejne ke liye */}
+      <input type="hidden" name="courseSlug" value={courseSlug} />
+
       <div className="mb-8 rounded-2xl bg-violet-50 px-5 py-4 text-sm text-slate-700">
         Applying for: <span className="font-semibold text-brand-purple">{courseTitle}</span>
       </div>
@@ -130,6 +140,13 @@ export default function AdmissionForm({ courseSlug, courseTitle }: AdmissionForm
         <input type="checkbox" required className="mt-1 h-4 w-4 accent-violet-600" />
         I confirm that the information provided is correct.
       </label>
+
+      {/* 🆕 (d) agar server koi error bheje to yahan laal box mein dikhega */}
+      {error && (
+        <div className="mt-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
 
       <button
         type="submit"
