@@ -11,9 +11,9 @@ const exploreLinks = [
 ];
 
 const contactItems = [
-  { icon: Mail, label: "Email", value: "info@agentic.com", href: "mailto:info@agentic.com" },
+  { icon: Mail, label: "Email", value: "ak.development.pk@gmail.com", href: "mailto:ak.development.pk@gmail.com" },
   { icon: Phone, label: "Phone", value: "+92 300 0000000", href: "tel:+923000000000" },
-  { icon: MapPin, label: "Location", value: "Sargodha, Pakistan" },
+  { icon: MapPin, label: "Location", value: "Pakistan" },
 ];
 
 // Brand icons (SVG), kyunke lucide mein brand logos nahi hote
@@ -158,7 +158,7 @@ export default function Footer() {
       {/* Big watermark */}
       <p
         aria-hidden="true"
-        className="font-display pointer-events-none -mb-[3vw] select-none bg-linear-to-b from-white/10 to-transparent bg-clip-text text-center text-[20vw] font-bold leading-none tracking-tighter text-transparent lg:-mb-10 lg:text-[14rem]"
+        className="font-display pointer-events-none mb-[-3vw] select-none bg-linear-to-b from-white/10 to-transparent bg-clip-text text-center text-[20vw] font-bold leading-none tracking-tighter text-transparent lg:-mb-10 lg:text-[14rem]"
       >
         Agentic
       </p>
