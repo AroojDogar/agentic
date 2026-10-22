@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Sparkles, Globe } from "lucide-react";
+import { LayoutDashboard, Sparkles, Globe, ClipboardList, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Role = "ADMIN" | "TEACHER" | "STUDENT";
@@ -10,7 +10,11 @@ type NavItem = { href: string; label: string; icon: LucideIcon };
 
 // Step 10 mein yahan aur links add karenge
 const navByRole: Record<Role, NavItem[]> = {
-  ADMIN: [{ href: "/lms/admin", label: "Overview", icon: LayoutDashboard }],
+  ADMIN: [
+    { href: "/lms/admin", label: "Overview", icon: LayoutDashboard },
+    { href: "/lms/admin/admissions", label: "Admissions", icon: ClipboardList },
+    { href: "/lms/admin/users", label: "Users", icon: Users },
+  ],
   TEACHER: [{ href: "/lms/teacher", label: "Overview", icon: LayoutDashboard }],
   STUDENT: [{ href: "/lms/student", label: "My Learning", icon: LayoutDashboard }],
 };
