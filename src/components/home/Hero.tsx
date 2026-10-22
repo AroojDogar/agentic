@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute top-20 -right-32 h-96 w-96 rounded-full bg-brand-cyan/30 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-40 left-1/3 h-96 w-96 rounded-full bg-brand-pink/20 blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-32">
+      <div className="relative mx-auto max-w-7xl px-4 pt-36 pb-24 text-center sm:px-6 lg:px-8 lg:pt-44 lg:pb-32">
         <span className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-1.5 text-sm font-medium text-brand-purple shadow-sm">
           <Sparkles className="h-4 w-4" />
           Building the Future with Agentic AI

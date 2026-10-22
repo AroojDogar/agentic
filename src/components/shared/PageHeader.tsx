@@ -16,7 +16,7 @@ export default function PageHeader({
       <div className="pointer-events-none absolute -top-32 -left-32 h-80 w-80 rounded-full bg-brand-purple/25 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-brand-cyan/25 blur-3xl" />
 
-      <div className="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-4xl px-4 pt-36 pb-20 text-center sm:px-6 lg:px-8 lg:pt-40 lg:pb-24">
         <span className="inline-block rounded-full border border-violet-200 bg-white px-4 py-1.5 text-sm font-medium text-brand-purple shadow-sm">
           {badge}
         </span>

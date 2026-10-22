@@ -46,7 +46,7 @@ export default async function CoursePage({ params }: PageProps) {
     <>
       {/* Course Hero */}
       <section className={`bg-linear-to-br ${course.color} text-white`}>
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-36 lg:pb-20">
           <Link
             href="/learning"
             className="inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white"
