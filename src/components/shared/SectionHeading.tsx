@@ -14,19 +14,18 @@ export default function SectionHeading({
   dark = false,
 }: SectionHeadingProps) {
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-wider text-brand-purple">
-        {eyebrow}
-      </p>
+    <div className="max-w-2xl">
+      <p className={`text-sm font-medium ${dark ? "text-saffron" : "text-stone"}`}>{eyebrow}</p>
       <h2
-        className={`font-display mt-3 text-3xl font-bold leading-tight sm:text-4xl ${
-          dark ? "text-white" : "text-ink"
+        className={`mt-3 text-3xl font-semibold tracking-tight sm:text-4xl ${
+          dark ? "text-white" : "text-spruce"
         }`}
       >
-        {title} {highlight && <span className="text-gradient">{highlight}</span>}
+        {title}
+        {highlight ? ` ${highlight}` : ""}
       </h2>
       {description && (
-        <p className={`mt-4 ${dark ? "text-slate-400" : "text-slate-600"}`}>
+        <p className={`mt-4 text-lg leading-relaxed ${dark ? "text-white/60" : "text-stone"}`}>
           {description}
         </p>
       )}

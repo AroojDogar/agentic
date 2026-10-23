@@ -1,32 +1,58 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-schibsted);
+  --font-display: var(--font-schibsted);
+  --font-mono: var(--font-jetbrains);
 }
 
 @theme {
-  --color-brand-purple: #7c3aed;
-  --color-brand-blue: #2563eb;
-  --color-brand-pink: #ec4899;
-  --color-brand-cyan: #06b6d4;
-  --color-ink: #0f172a;
+  /* Naya brand palette */
+  --color-paper: #f7f7f4;
+  --color-spruce: #0e3b2e;
+  --color-pine: #1f5c47;
+  --color-saffron: #f2b230;
+  --color-stone: #6e7672;
+  --color-ink: #0e3b2e;
+
+  /* Purane naam naye rangon par (taake LMS waghera khud badal jayein) */
+  --color-brand-purple: #0e3b2e;
+  --color-brand-blue: #1f5c47;
+  --color-brand-cyan: #f2b230;
+  --color-brand-pink: #f2b230;
+
+  /* Tailwind ka violet ab brand green hai */
+  --color-violet-50: #eef4f0;
+  --color-violet-100: #dce9e1;
+  --color-violet-200: #b8d3c4;
+  --color-violet-500: #1f5c47;
+  --color-violet-600: #0e3b2e;
 }
 
 @utility text-gradient {
-  background-image: linear-gradient(90deg, #7c3aed, #2563eb, #06b6d4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-   padding-bottom:  0.2em;
+  color: var(--color-spruce);
 }
 
 @utility bg-brand-gradient {
-  background-image: linear-gradient(135deg, #7c3aed 0%, #2563eb 50%, #06b6d4 100%);
+  background-color: var(--color-spruce);
 }
 
 body {
-  background: #ffffff;
+  background: var(--color-paper);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-saffron);
+  color: var(--color-spruce);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
